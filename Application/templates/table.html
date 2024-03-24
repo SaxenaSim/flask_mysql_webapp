@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Display</title>
+    <!-- Link to Bootstrap CSS from the static directory -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-5 mb-4">Table Data</h1>
+            </div>
+            <div class="col">
+                <form action="{{ url_for('add_column') }}" method="GET" style="padding: 60px;right: 0%; position:absolute">
+                    <button class="btn btn-success" type="submit">Add Column</button>
+                </form>
+            </div>
+
+        </div>
+        
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <!-- Display dynamic column headers -->
+                    {% for col in columns %}
+                    <th>{{ col }}</th>
+                    {% endfor %}
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                    <td>
+                        <form action="{{ url_for('edit_row', emp_code=row[0]) }}" method="GET">
+                            <button class="btn btn-primary btn-sm" type="submit">Edit</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <!-- Link to Bootstrap JS from the static directory (optional) -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Display</title>
+</head>
+<body>
+    <h1>Table Data</h1>
+    <table border="1">
+        <tr>
+            {% for col in columns %}
+            <th>{{ col }}</th>
+            {% endfor %}
+            <th>Edit</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            {% for value in row %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            <td>
+                <form action="{{ url_for('edit_row', emp_code=row[0]) }}" method="GET">
+                    <button type="submit">Edit</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <form action="{{ url_for('add_column') }}" method="GET">
+        <button type="submit">Add Column</button>
+    </form>
+
+</body>
+</html> -->

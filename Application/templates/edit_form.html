@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Row</title>
+    <!-- Link to Bootstrap CSS from the static directory -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Edit Row</h1>
+        <form action="/edit/{{ emp_code }}" method="POST">
+            <div class="row">
+                {% for column, value in row_data.items() %}
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label style="margin-top: 20px;" for="{{ column }}">{{ column }}</label>
+                        <input type="text" style="margin-top: 20px;" class="form-control" id="{{ column }}" name="{{ column }}" value="{{ value }}" required>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top:20px;">Save Changes</button>
+        </form>
+    </div>
+
+    <!-- Link to Bootstrap JS from the static directory (optional) -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Row</title>
+</head>
+<body>
+    <h1>Edit Row</h1>
+    <form action="/edit/{{ emp_code }}" method="POST">
+        {% for column, value in row_data.items() %}
+            <label for="{{ column }}">{{ column }}:</label>
+            <input type="text" id="{{ column }}" name="{{ column }}" value="{{ value }}" required><br>
+        {% endfor %}
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html> -->
