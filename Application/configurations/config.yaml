@@ -1,6 +1,6 @@
 database:
-  host: '127.0.0.1'
-  port: 3306
-  database: 'company'
-  user: 'root'
-  password: 'India@123'
+  host: 'Enter your database host'
+  port: 'Enter your database port number'
+  database: 'Enter your database name'
+  user: 'Enter your user'
+  password: 'Enter your password'
