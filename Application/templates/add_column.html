@@ -4,65 +4,37 @@
     <title>Add Column</title>
     <!-- Link to Bootstrap CSS from the static directory -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+        .modal-content {
+            width: 80%;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="mt-5">Add Column</h1>
-        <form action="{{ url_for('add_column') }}" method="post">
-            <div class="form-group">
-                <label style="margin-top: 10px;" for="column_name">Column Name:</label>
-                <input type="text" style="margin-top: 10px;" class="form-control" id="column_name" name="column_name" required>
-            </div>
-            <div form-group>
-                <label style="margin-top: 10px;" for="data_type">Data Type:</label>
-                <select class="form-control" style="margin-top: 10px;" id="data_type" name="data_type" required>
-                    <option value="">Select Data Type</option> <!-- Default option -->
-                    <option value="INT">INT</option>
-                    <option value="VARCHAR(30)">VARCHAR(30)</option>
-                    <option value="FLOAT">FLOAT</option>
-                    <option value="DATETIME">DATE</option>
-                    <!-- Add more data types as needed -->
-                </select>
-            </div>
-            <button type="submit" style="margin-top: 10px;" class="btn btn-primary">Add Column</button>
-        </form>
-    </div>
 
-    <!-- Link to Bootstrap JS from the static directory (optional) -->
+    <form method="POST" action="{{ url_for('add_column') }}">
+        <div class="form-group">
+            <label for="column_name">Column Name</label>
+            <input type="text" class="form-control" id="column_name" name="column_name" placeholder="Enter column name">
+        </div>
+        <div class="form-group">
+            <label for="data_type">Data Type</label>
+            <select class="form-control" id="data_type" name="data_type">
+                <option value="integer">Integer</option>
+                <option value="varchar">Text</option>
+                <option value="datetime">DateTime</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Add Column</title>
-</head>
-<body>
-    <h1>Add Column</h1>
-    <form action="{{ url_for('add_column') }}" method="post">
-        <label for="column_name">Column Name:</label>
-        <input type="text" id="column_name" name="column_name" required><br><br>
-        
-        <label for="data_type">Data Type:</label>
-        <select id="data_type" name="data_type" required>
-            <option value="">Select Data Type</option> 
-            <option value="INT">INT</option>
-            <option value="VARCHAR">VARCHAR</option>
-            <option value="FLOAT">FLOAT</option>
-            <option value="DATETIME">DATE</option>
-        </select><br><br>
-        
-        <input type="submit" value="Add Column">
-    </form>
-</body>
-</html> -->
